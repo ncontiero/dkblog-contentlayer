@@ -13,7 +13,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        inter: "var(--font-inter)",
+        merriweatherSans: "var(--font-merriweather-sans)",
       },
       colors: {
         border: "hsl(var(--border))",

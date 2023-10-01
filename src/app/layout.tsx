@@ -1,13 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter } from "next/font/google";
+import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-const inter = Inter({
+const merriweatherSans = MerriweatherSans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-merriweather-sans",
 });
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={merriweatherSans.variable}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system">
           {children}
