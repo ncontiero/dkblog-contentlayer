@@ -51,7 +51,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-primary/60;
+    @apply border-border selection:bg-primary/30 dark:selection:bg-primary/60;
   }
   body {
     @apply bg-background font-merriweatherSans text-foreground;
