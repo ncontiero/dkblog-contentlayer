@@ -38,7 +38,7 @@ pnpm install
 To run the project locally, just run the command below:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 - go to <http://localhost:3000> to see the application.
