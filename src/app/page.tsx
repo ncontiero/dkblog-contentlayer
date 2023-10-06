@@ -3,6 +3,7 @@ import { compareDesc } from "date-fns";
 import { dateParser } from "@/utils/dateParser";
 
 import Link from "next/link";
+import { Tag } from "@/components/Tag";
 
 export default function HomePage() {
   const posts = allPosts.sort((a, b) =>
@@ -25,15 +26,9 @@ export default function HomePage() {
             </Link>
           </h2>
           {post.tags && post.tags.length > 0 && (
-            <div className="mt-1.5 flex gap-1">
+            <div className="mt-1.5 flex flex-wrap gap-0.5">
               {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/t/${tag}`}
-                  className="rounded-md border border-transparent p-1 text-sm font-light duration-200 hover:border-primary hover:bg-primary/30 focus-visible:border-primary focus-visible:bg-primary/30 focus-visible:outline-none"
-                >
-                  #{tag}
-                </Link>
+                <Tag key={tag} tag={tag} />
               ))}
             </div>
           )}

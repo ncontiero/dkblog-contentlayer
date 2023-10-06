@@ -2,8 +2,10 @@ import "./mdx.css";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
+import { dateParser } from "@/utils/dateParser";
 
 import { Mdx } from "@/components/Mdx";
+import { Tag } from "@/components/Tag";
 
 export const revalidate = 60;
 
@@ -54,6 +56,7 @@ export default function PostPage({ params }: Props) {
   if (!post) {
     notFound();
   }
+  const posted = dateParser(new Date(post.date));
 
   return (
     <div className="bg-secondary sm:rounded-md">
@@ -65,7 +68,24 @@ export default function PostPage({ params }: Props) {
           className="flex aspect-[1000_/_420] items-center justify-center object-contain sm:rounded-t-md"
         />
       )}
-      <Mdx code={post.body.code} />
+      <div className="p-4 pt-6 sm:p-10">
+        <div className="px-1">
+          <time dateTime={post.date} className="text-xs font-light">
+            Posted on {posted.postDateFormat}, {posted.year}
+          </time>
+          <h1 className="relative my-2 w-full scroll-m-20 text-4xl font-bold tracking-tight">
+            {post.title}
+          </h1>
+          {post.tags && post.tags.length > 0 && (
+            <div className="mt-1.5 flex flex-wrap gap-0.5">
+              {post.tags.map((tag) => (
+                <Tag key={tag} tag={tag} />
+              ))}
+            </div>
+          )}
+        </div>
+        <Mdx code={post.body.code} />
+      </div>
     </div>
   );
 }

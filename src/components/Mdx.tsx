@@ -226,7 +226,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code, { theme: "github-dark" });
 
   return (
-    <div className="mdx p-4 pt-6 sm:p-10">
+    <div className="mdx pt-6">
       <Component components={components} />
     </div>
   );
