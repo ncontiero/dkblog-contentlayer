@@ -1,0 +1,140 @@
+---
+title: Contentlayer with Next.Js
+description: Using Contentlayer with Next.Js
+date: 2023-10-05
+tags: [js, ts, mdx]
+---
+
+# Contentlayer with Next.Js
+
+Contentlayer is a tool that makes it easy to integrate MDX content with your code, transforming it into structured and type-safe data. In this post, I will show you how to use Contentlayer to create a blog with Next.js, MDX and Contentlayer.
+
+## What is MDX?
+
+MDX is an extension of Markdown that allows you to use JSX components within your content. This can provide more power and flexibility for the main area of a piece of content. For example, you can use buttons, charts, tables or any other React component in your MDX. Here is an example of an MDX file:
+
+```mdx
+# Hello, World!
+
+This is my first MDX file. Here is a button element:
+
+<button>Click me!</button>
+
+<MyComponent />
+```
+
+## What is Contentlayer?
+
+Contentlayer is a tool that processes your MDX content and generates TypeScript type definitions and data objects ready to be imported as an ESM module. Contentlayer also validates your content and frontmatter, and provides great error messages. Contentlayer works with any content source, whether local files or remote CMS.
+
+To use Contentlayer, you need to configure your content source and define the document types that you expect. For example, if you have local MDX files in the `posts` folder, you can define a document type called `Post` with the fields `title`, `date` and `body`. Here is an example of Contentlayer configuration:
+
+```ts
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+
+const Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: `**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: "posts",
+  documentTypes: [Post],
+});
+```
+
+## How to use Contentlayer with Next.js?
+
+To use Contentlayer with Next.js, you can use the `next-contentlayer` package that provides some utilities to make the integration easier. You can install the package with the following command:
+
+```sh
+npm install next-contentlayer
+```
+
+Next, you need to add a script in your `package.json` to run Contentlayer before Next.js:
+
+```json
+{
+  "scripts": {
+    "dev": "contentlayer dev && next dev",
+    "build": "contentlayer build && next build"
+  }
+}
+```
+
+This will generate the necessary files in the `.contentlayer/generated` folder, which you can import in your code. For example, if you want to list all the posts on your home page, you can do something like this:
+
+```tsx
+// pages/index.tsx
+import { allPosts } from "contentlayer/generated";
+
+export default function Home() {
+  return (
+    <div>
+      <h1>My blog</h1>
+      <ul>
+        {allPosts.map((post) => (
+          <li key={post._id}>
+            <a href={post.url}>{post.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+To render the MDX content of a post on a specific page, you can use the hook `useMDXComponent` provided by `next-contentlayer/hooks`. This hook processes the MDX file via `mdx-bundler` and returns a React component that you can use on your page. Here is an example:
+
+```tsx
+// pages/posts/[slug].tsx
+import { allPosts } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+export async function getStaticPaths() {
+  // Get a list of valid paths for the posts.
+  const paths = allPosts.map((post) => ({
+    params: { slug: post._raw.flattenedPath },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps(context) {
+  // Find the post for the current page.
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath === context.params.slug,
+  );
+  // Return notFound if the post does not exist.
+  if (!post) return { notFound: true };
+  // Return the post as props for the page.
+  return { props: { post } };
+}
+
+export default function Page({ post }) {
+  // Process the MDX file via the useMDXComponent hook.
+  const MDXContent = useMDXComponent(post.body.code);
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.date.toLocaleDateString()}</p>
+      <MDXContent />
+    </div>
+  );
+}
+```
+
+## Conclusion
+
+In this post, we saw how to use Contentlayer to create a blog with Next.js, MDX and Contentlayer. Contentlayer is a tool that makes it easy to integrate MDX content with your code, transforming it into structured and type-safe data. Contentlayer also offers a great development experience, with content validation, TypeScript type generation and amazing build and page performance. If you want to learn more about Contentlayer, you can visit its [official website](https://contentlayer.dev/) or its [GitHub repository](https://github.com/contentlayerdev/contentlayer).

@@ -48,7 +48,7 @@ function HeadingLinked({
       <NextLink
         href={`#${id}`}
         aria-label="Link to section"
-        className="group flex w-fit items-center rounded-md no-underline underline-offset-4 ring-offset-black duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-900 focus-visible:ring-offset-2 active:opacity-70"
+        className="group flex w-fit items-center rounded-md no-underline underline-offset-4 ring-offset-background duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:opacity-70"
       >
         {children}
         <LinkIcon
@@ -76,7 +76,7 @@ export const components = {
     <HeadingLinked
       as="h2"
       className={cn(
-        "mt-10 w-full scroll-m-20 border-b border-b-zinc-800 pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+        "mt-10 w-full scroll-m-20 border-b border-b-zinc-500 pb-1 text-3xl font-semibold tracking-tight first:mt-0",
         className,
       )}
       {...props}
@@ -138,12 +138,15 @@ export const components = {
     <ol className={cn("my-6 list-decimal pl-8", className)} {...props} />
   ),
   li: ({ className, ...props }: HTMLAttributes<HTMLLIElement>) => (
-    <li className={cn("my-1 marker:text-zinc-200", className)} {...props} />
+    <li
+      className={cn("my-1 marker:text-muted-foreground", className)}
+      {...props}
+    />
   ),
   blockquote: ({ className, ...props }: HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        "mt-6 border-l-2 border-zinc-600 pl-3 font-normal text-zinc-400 [&>*]:text-zinc-400",
+        "mt-6 border-l-2 border-zinc-400 pl-3 font-normal text-foreground/70 dark:border-zinc-600 [&>*]:text-foreground/70",
         className,
       )}
       {...props}
@@ -153,7 +156,7 @@ export const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className={cn(
-        "my-0 rounded-md border border-zinc-800 shadow-xl shadow-violet-950/10",
+        "mx-auto my-0 w-full rounded-md border border-border shadow-xl shadow-border",
         className,
       )}
       alt={alt}
@@ -161,7 +164,7 @@ export const components = {
     />
   ),
   hr: ({ ...props }) => (
-    <hr className="my-4 border-zinc-200 md:my-8" {...props} />
+    <hr className="my-4 border-zinc-400 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -198,7 +201,7 @@ export const components = {
   pre: ({ className, ...props }: HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg bg-zinc-900/80 px-0 py-4",
+        "my-4 overflow-x-auto rounded-lg bg-black px-0 py-4",
         className,
       )}
       {...props}
@@ -207,7 +210,7 @@ export const components = {
   code: ({ className, ...props }: HTMLAttributes<HTMLPreElement>) => (
     <code
       className={cn(
-        "relative rounded bg-zinc-400/20 px-1.5 py-1 font-mono",
+        "relative rounded bg-secondary-foreground/10 px-1.5 py-1 font-mono",
         className,
       )}
       {...props}
@@ -220,10 +223,10 @@ interface MdxProps {
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
+  const Component = useMDXComponent(code, { theme: "github-dark" });
 
   return (
-    <div className="mdx">
+    <div className="mdx p-4 pt-6 sm:p-10">
       <Component components={components} />
     </div>
   );

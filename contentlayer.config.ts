@@ -10,7 +10,7 @@ import rehypeSlug from "rehype-slug";
 const computedFields: ComputedFields = {
   path: {
     type: "string",
-    resolve: (doc) => `posts/${doc._raw.flattenedPath}`,
+    resolve: (doc) => `p/${doc._raw.flattenedPath}`,
   },
   slug: {
     type: "string",
@@ -20,7 +20,7 @@ const computedFields: ComputedFields = {
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: "**/*.mdx",
+  filePathPattern: `**/*.mdx`,
   contentType: "mdx",
 
   fields: {
@@ -34,7 +34,8 @@ export const Post = defineDocumentType(() => ({
 }));
 
 const rehypePrettyCodeOptions: Options = {
-  theme: "rose-pine",
+  theme: "dracula",
+  keepBackground: false,
   onVisitLine(node) {
     if (node.children.length === 0) {
       node.children = [{ type: "text", value: " " }];

@@ -7,6 +7,9 @@ const nextConfig = {
     SITE_LOCALE: process.env.SITE_LOCALE || "en_US",
     SITE_BASEURL: process.env.SITE_BASEURL || "http://localhost:3000",
   },
+  images: {
+    domains: ["res.cloudinary.com", "github.com"],
+  },
 };
 
 export default withContentlayer(nextConfig);

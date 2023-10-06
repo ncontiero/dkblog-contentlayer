@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          <div className="container pt-16">{children}</div>
+          <div className="pt-16 sm:container">{children}</div>
         </ThemeProvider>
       </body>
     </html>
