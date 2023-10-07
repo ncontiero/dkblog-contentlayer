@@ -8,6 +8,7 @@ A blog using Next.Js and Contentlayer.
 
 - [Next.Js](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
 
 ## Install and run the project
 
@@ -22,7 +23,7 @@ Do you use `nvm`? Then you can run `nvm install` in the project folder to instal
 ### Get the repository
 
 ```bash
-git clone https://github.com/dkshs/dkblog.git
+git clone https://github.com/dkshs/dkblog-contentlayer.git
 ```
 
 ### Local Dependencies
