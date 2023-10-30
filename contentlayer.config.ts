@@ -34,7 +34,7 @@ export const Post = defineDocumentType(() => ({
 }));
 
 const rehypePrettyCodeOptions: Options = {
-  theme: "dracula",
+  theme: { light: "min-light", dark: "dracula" },
   keepBackground: false,
   onVisitLine(node) {
     if (node.children.length === 0) {
@@ -54,10 +54,6 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      [rehypePrettyCode as unknown as any, rehypePrettyCodeOptions],
-    ],
+    rehypePlugins: [rehypeSlug, [rehypePrettyCode, rehypePrettyCodeOptions]],
   },
 });

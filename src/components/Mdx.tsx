@@ -201,7 +201,7 @@ export const components = {
   pre: ({ className, ...props }: HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "my-4 overflow-x-auto rounded-lg bg-black px-0 py-4",
+        "my-4 overflow-x-auto rounded-lg bg-background px-0 py-4",
         className,
       )}
       {...props}
@@ -226,7 +226,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code, { theme: "github-dark" });
 
   return (
-    <div className="mdx pt-6">
+    <div className="mdx prose prose-quoteless w-full min-w-full pt-6 dark:prose-invert">
       <Component components={components} />
     </div>
   );

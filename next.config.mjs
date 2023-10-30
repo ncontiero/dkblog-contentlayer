@@ -8,7 +8,13 @@ const nextConfig = {
     SITE_BASEURL: process.env.SITE_BASEURL || "http://localhost:3000",
   },
   images: {
-    domains: ["res.cloudinary.com", "github.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "github.com" },
+    ],
+  },
+  experimental: {
+    webpackBuildWorker: true,
   },
 };
 

@@ -29,24 +29,26 @@ export async function generateMetadata(
   if (!post) {
     return notFound();
   }
+  const canonicalUrl = `${(await parent).metadataBase}${post.path}`;
 
   return {
     title: post.title,
     description: post.description,
     alternates: {
-      canonical: `${(await parent).metadataBase}${post.path}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `${(await parent).metadataBase}${post.path}`,
+      url: canonicalUrl,
+      images: post.image ? [{ url: post.image, alt: post.title }] : undefined,
       type: "article",
     },
     twitter: {
       card: post.image ? "summary_large_image" : "summary",
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : undefined,
+      images: post.image ? { url: post.image, alt: post.title } : undefined,
     },
   };
 }
@@ -65,7 +67,7 @@ export default function PostPage({ params }: Props) {
         <img
           src={post.image}
           alt={post.title}
-          className="flex aspect-[1000_/_420] items-center justify-center object-contain sm:rounded-t-md"
+          className="flex aspect-[1000_/_420] min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md"
         />
       )}
       <div className="p-4 pt-6 sm:p-10">

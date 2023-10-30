@@ -21,7 +21,7 @@ export function PostCard({
         {dateParser(new Date(post.date)).postDateFormat}
       </time>
       <h2 className="text-2xl font-bold">
-        <Link href={post.path} className="duration-200 hover:opacity-70">
+        <Link href={`/${post.path}`} className="duration-200 hover:opacity-70">
           {post.title}
         </Link>
       </h2>
