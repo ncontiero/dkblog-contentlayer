@@ -2,7 +2,7 @@
 
 [![license mit](https://img.shields.io/badge/licence-MIT-6C47FF)](LICENSE)
 
-A blog using Next.Js and Contentlayer.
+DkBlog ContentLayer is a project using [Next.Js](https://nextjs.org/) to create a static blog with [ContentLayer](https://contentlayer.dev/).
 
 ## Technologies used
 
