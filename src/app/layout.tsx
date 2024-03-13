@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 
 import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/Header";
 
 const merriweatherSans = MerriweatherSans({
