@@ -1,6 +1,7 @@
 {
   "name": "dkblog",
   "version": "0.1.0",
+  "packageManager": "pnpm@9.0.5",
   "author": "DKSHS",
   "license": "MIT",
   "private": true,
