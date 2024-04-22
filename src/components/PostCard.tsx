@@ -1,15 +1,15 @@
 import type { Post } from "contentlayer/generated";
 
+import Link from "next/link";
 import { dateParser } from "@/utils/dateParser";
 import { cn } from "@/lib/utils";
 
-import Link from "next/link";
 import { Tag } from "./Tag";
 
 export function PostCard({
   className,
   ...post
-}: Post & { className?: string }) {
+}: Post & { readonly className?: string }) {
   return (
     <div
       className={cn(
@@ -25,13 +25,13 @@ export function PostCard({
           {post.title}
         </Link>
       </h2>
-      {post.tags && post.tags.length > 0 && (
+      {post.tags && post.tags.length > 0 ? (
         <div className="mt-1.5 flex flex-wrap gap-0.5">
           {post.tags.map((tag) => (
             <Tag key={tag} tag={tag} />
           ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

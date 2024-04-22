@@ -8,16 +8,15 @@ import { PostCard } from "@/components/PostCard";
 export const revalidate = 60;
 
 type Props = {
-  params: { tag: string };
+  readonly params: { tag: string };
 };
 
 const allTags = allPosts
-  .map((p) => p.tags && p.tags.map((t) => t))
-  .flat()
+  .flatMap((p) => p.tags && p.tags.map((t) => t))
   .map((t) => t || "")
   .filter((t, i, self) => self.indexOf(t) === i);
 
-export async function generateStaticParams(): Promise<Props["params"][]> {
+export function generateStaticParams(): Props["params"][] {
   return allTags.map((t) => {
     return { tag: t };
   });

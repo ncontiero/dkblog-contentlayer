@@ -1,7 +1,7 @@
 import {
+  type ComputedFields,
   defineDocumentType,
   makeSource,
-  type ComputedFields,
 } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";

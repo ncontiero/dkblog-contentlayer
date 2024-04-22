@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "react";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
 
 interface TagProps extends HTMLAttributes<HTMLAnchorElement> {
-  tag: string;
+  readonly tag: string;
 }
 
 export function Tag({ tag, className, ...props }: TagProps) {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { PropsWithChildren } from "react";
 
 // This file is required to use MDX in `app` directory.

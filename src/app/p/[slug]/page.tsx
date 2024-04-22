@@ -1,5 +1,5 @@
-import "./mdx.css";
 import type { Metadata, ResolvingMetadata } from "next";
+import "./mdx.css";
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 import { dateParser } from "@/utils/dateParser";
@@ -10,10 +10,10 @@ import { Tag } from "@/components/Tag";
 export const revalidate = 60;
 
 type Props = {
-  params: { slug: string };
+  readonly params: { slug: string };
 };
 
-export async function generateStaticParams(): Promise<Props["params"][]> {
+export function generateStaticParams(): Props["params"][] {
   return allPosts.map((p) => ({
     slug: p.slug,
   }));
@@ -62,14 +62,14 @@ export default function PostPage({ params }: Props) {
 
   return (
     <div className="bg-secondary sm:rounded-md">
-      {post.image && (
-        // eslint-disable-next-line @next/next/no-img-element
+      {post.image ? (
+        // eslint-disable-next-line nextjs/no-img-element
         <img
           src={post.image}
           alt={post.title}
           className="flex aspect-[1000_/_420] min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md"
         />
-      )}
+      ) : null}
       <div className="p-4 pt-6 sm:p-10">
         <div className="px-1">
           <time dateTime={post.date} className="text-xs font-light">
@@ -78,13 +78,13 @@ export default function PostPage({ params }: Props) {
           <h1 className="relative my-2 w-full scroll-m-20 text-4xl font-bold tracking-tight">
             {post.title}
           </h1>
-          {post.tags && post.tags.length > 0 && (
+          {post.tags && post.tags.length > 0 ? (
             <div className="mt-1.5 flex flex-wrap gap-0.5">
               {post.tags.map((tag) => (
                 <Tag key={tag} tag={tag} />
               ))}
             </div>
-          )}
+          ) : null}
         </div>
         <Mdx code={post.body.code} />
       </div>

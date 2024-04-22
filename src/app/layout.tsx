@@ -1,10 +1,10 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import "./globals.css";
 import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 
-import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
 import { ThemeProvider } from "next-themes";
+import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
 import { Header } from "@/components/Header";
 
 const merriweatherSans = MerriweatherSans({
@@ -52,7 +52,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  readonly children: ReactNode;
+}) {
   return (
     <html lang="en" className={merriweatherSans.variable}>
       <body>
