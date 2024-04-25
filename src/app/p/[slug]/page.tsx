@@ -1,5 +1,5 @@
-import type { Metadata, ResolvingMetadata } from "next";
 import "./mdx.css";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 import { dateParser } from "@/utils/dateParser";
