@@ -49,8 +49,6 @@
     "typescript": "^5.5.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,md}": [
-      "pnpm lint:fix"
-    ]
+    "*": "pnpm lint:fix"
   }
 }
