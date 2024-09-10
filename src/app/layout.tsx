@@ -1,11 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 
+import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
 import { Header } from "@/components/Header";
+import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
 
 const merriweatherSans = MerriweatherSans({
   subsets: ["latin"],

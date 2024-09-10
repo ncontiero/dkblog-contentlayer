@@ -3,9 +3,9 @@ import {
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files";
-import remarkGfm from "remark-gfm";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 const computedFields: ComputedFields = {
   path: {

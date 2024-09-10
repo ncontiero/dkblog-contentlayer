@@ -1,9 +1,8 @@
 import type { Post } from "contentlayer/generated";
 
 import Link from "next/link";
-import { dateParser } from "@/utils/dateParser";
 import { cn } from "@/lib/utils";
-
+import { dateParser } from "@/utils/dateParser";
 import { Tag } from "./Tag";
 
 export function PostCard({
