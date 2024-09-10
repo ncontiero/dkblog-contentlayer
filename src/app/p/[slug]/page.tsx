@@ -1,11 +1,11 @@
 import "./mdx.css";
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
-import { dateParser } from "@/utils/dateParser";
 
+import { allPosts } from "contentlayer/generated";
+import { notFound } from "next/navigation";
 import { Mdx } from "@/components/Mdx";
 import { Tag } from "@/components/Tag";
+import { dateParser } from "@/utils/dateParser";
 
 export const revalidate = 60;
 

@@ -1,9 +1,9 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
-import { capitalize } from "@/utils/capitalize";
 
+import { allPosts } from "contentlayer/generated";
+import { notFound } from "next/navigation";
 import { PostCard } from "@/components/PostCard";
+import { capitalize } from "@/utils/capitalize";
 
 export const revalidate = 60;
 

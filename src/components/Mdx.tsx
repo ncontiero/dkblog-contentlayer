@@ -4,11 +4,10 @@ import type {
   ImgHTMLAttributes,
 } from "react";
 
-import { useMDXComponent } from "next-contentlayer/hooks";
-import NextLink from "next/link";
 import { Link as LinkIcon } from "lucide-react";
+import NextLink from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import { cn } from "@/lib/utils";
-
 import { Link } from "./ui/Link";
 
 function AnchorLink({
