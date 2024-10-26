@@ -10,10 +10,10 @@ import { dateParser } from "@/utils/dateParser";
 export const revalidate = 60;
 
 type Props = {
-  readonly params: { slug: string };
+  readonly params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams(): Props["params"][] {
+export function generateStaticParams() {
   return allPosts.map((p) => ({
     slug: p.slug,
   }));
@@ -23,7 +23,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
 
   const post = allPosts.find((p) => p.slug === slug);
   if (!post) {
@@ -53,8 +53,9 @@ export async function generateMetadata(
   };
 }
 
-export default function PostPage({ params }: Props) {
-  const post = allPosts.find((p) => p.slug === params.slug);
+export default async function PostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = allPosts.find((p) => p.slug === slug);
   if (!post) {
     notFound();
   }
