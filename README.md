@@ -16,7 +16,7 @@ DkBlog ContentLayer is a project using [Next.Js](https://nextjs.org/) to create 
 
 You need to have a main dependency installed:
 
-- Node.js LTS v16 (or any higher version)
+- Node.js LTS v20 (or any higher version)
 
 Do you use `nvm`? Then you can run `nvm install` in the project folder to install and use the most appropriate version of Node.js.
 
