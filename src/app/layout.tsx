@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Merriweather_Sans as MerriweatherSans } from "next/font/google";
 import { Header } from "@/components/Header";
 import { SITE_BASEURL, SITE_LOCALE, SITE_NAME } from "@/utils/constants";
 
