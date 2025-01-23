@@ -2,7 +2,7 @@ import {
   type ComputedFields,
   defineDocumentType,
   makeSource,
-} from "contentlayer/source-files";
+} from "contentlayer2/source-files";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
@@ -54,8 +54,6 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     rehypePlugins: [rehypeSlug, [rehypePrettyCode, rehypePrettyCodeOptions]],
   },
 });

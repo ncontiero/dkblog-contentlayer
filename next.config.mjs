@@ -1,7 +1,8 @@
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from "next-contentlayer2";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   env: {
     SITE_NAME: process.env.SITE_NAME || "DkBlog",
     SITE_LOCALE: process.env.SITE_LOCALE || "en_US",
@@ -15,6 +16,7 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
+    turbo: {},
   },
 };
 
