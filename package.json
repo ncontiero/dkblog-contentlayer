@@ -28,7 +28,7 @@
     "next-themes": "^0.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "shiki": "^2.5.0",
+    "shiki": "^3.2.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -52,6 +52,11 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "rehype-pretty-code": "patches/rehype-pretty-code.patch"
+    }
   },
   "lint-staged": {
     "*": "pnpm lint:fix"
