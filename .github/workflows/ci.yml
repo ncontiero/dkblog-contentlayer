@@ -17,6 +17,6 @@ jobs:
         with:
           cache: pnpm
           node-version-file: .nvmrc
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm install
+      - run: pnpm contentlayer2 build
       - run: pnpm check
