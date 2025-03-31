@@ -23,7 +23,7 @@ Do you use `nvm`? Then you can run `nvm install` in the project folder to instal
 ### Get the repository
 
 ```bash
-git clone https://github.com/dkshs/dkblog-contentlayer.git
+git clone https://github.com/ncontiero/dkblog-contentlayer.git
 ```
 
 ### Local Dependencies

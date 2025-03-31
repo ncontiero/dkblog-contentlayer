@@ -1,9 +1,3 @@
-import { dkshs } from "@dkshs/eslint-config";
+import { ncontiero } from "@ncontiero/eslint-config";
 
-export default dkshs({
-  react: {
-    overrides: {
-      "react/boolean-prop-naming": "off",
-    },
-  },
-});
+export default ncontiero();
