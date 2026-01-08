@@ -34,7 +34,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@ncontiero/eslint-config": "6.2.1",
+    "@ncontiero/eslint-config": "6.5.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24.10.4",
     "@types/react": "^19.2.7",
