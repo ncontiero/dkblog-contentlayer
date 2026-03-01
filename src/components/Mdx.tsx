@@ -47,7 +47,11 @@ function HeadingLinked({
       <NextLink
         href={`#${id}`}
         aria-label="Link to section"
-        className="group flex w-fit items-center rounded-md no-underline underline-offset-4 ring-offset-background duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:opacity-70"
+        className="
+          group flex w-fit items-center rounded-md no-underline underline-offset-4 ring-offset-background duration-200
+          hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+          focus-visible:ring-offset-2 active:opacity-70
+        "
       >
         {children}
         <LinkIcon
@@ -145,7 +149,10 @@ export const components = {
   blockquote: ({ className, ...props }: HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        "mt-6 border-l-2 border-zinc-400 pl-3 font-normal text-foreground/70 dark:border-zinc-600 [&>*]:text-foreground/70",
+        `
+          mt-6 border-l-2 border-zinc-400 pl-3 font-normal text-foreground/70 dark:border-zinc-600
+          [&>*]:text-foreground/70
+        `,
         className,
       )}
       {...props}

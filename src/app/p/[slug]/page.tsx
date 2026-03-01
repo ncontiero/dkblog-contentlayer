@@ -68,7 +68,9 @@ export default async function PostPage({ params }: Props) {
         <img
           src={post.image}
           alt={post.title}
-          className="flex aspect-[1000_/_420] min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md"
+          className="
+            flex aspect-[1000_/_420] min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md
+          "
         />
       ) : null}
       <div className="p-4 pt-6 sm:p-10">

@@ -11,7 +11,10 @@ export function Tag({ tag, className, ...props }: TagProps) {
     <Link
       href={`/t/${tag}`}
       className={cn(
-        "rounded-md border border-transparent p-1 text-sm font-light duration-200 hover:border-primary/60 hover:bg-primary/20 focus-visible:border-primary focus-visible:bg-primary/30 focus-visible:outline-none",
+        `
+          rounded-md border border-transparent p-1 text-sm font-light duration-200 hover:border-primary/60
+          hover:bg-primary/20 focus-visible:border-primary focus-visible:bg-primary/30 focus-visible:outline-none
+        `,
         className,
       )}
       {...props}

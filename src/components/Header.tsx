@@ -7,7 +7,10 @@ export function Header() {
       <div className="flex size-full items-center justify-between px-4 sm:container">
         <Link
           href="/"
-          className="rounded-md p-2 text-2xl font-bold duration-200 hover:opacity-70 focus:outline-none focus:ring focus:ring-ring"
+          className="
+            rounded-md p-2 text-2xl font-bold duration-200 hover:opacity-70 focus:outline-none focus:ring
+            focus:ring-ring
+          "
         >
           DkBlog
         </Link>
