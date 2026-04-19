@@ -53,8 +53,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={merriweatherSans.variable}>
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={merriweatherSans.variable}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
           <div className="pt-16 sm:container">{children}</div>

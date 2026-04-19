@@ -54,8 +54,8 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <div>
-      <div className="w-full rounded-md bg-secondary">
-        <div className="w-full rounded-t-md bg-primary/80 py-2" />
+      <div className="bg-secondary w-full rounded-md">
+        <div className="bg-primary/80 w-full rounded-t-md py-2" />
         <div className="p-8">
           <h1 className="text-4xl font-bold capitalize">{tag}</h1>
         </div>

@@ -1,4 +1,3 @@
-import "./mdx.css";
 import type { Metadata, ResolvingMetadata } from "next";
 
 import { allPosts } from "contentlayer/generated";
@@ -67,7 +66,7 @@ export default async function PostPage({ params }: Props) {
           src={post.image}
           alt={post.title}
           className="
-            flex aspect-[1000_/_420] min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md
+            flex aspect-1000/420 min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md
           "
         />
       ) : null}

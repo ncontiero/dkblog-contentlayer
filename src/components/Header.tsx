@@ -3,13 +3,13 @@ import { ModeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-[9999] h-16 w-full border-b-2 bg-secondary/80 backdrop-blur">
+    <header className="bg-secondary/80 fixed inset-x-0 top-0 z-9999 h-16 w-full border-b-2 backdrop-blur-sm">
       <div className="flex size-full items-center justify-between px-4 sm:container">
         <Link
           href="/"
           className="
-            rounded-md p-2 text-2xl font-bold duration-200 hover:opacity-70 focus:outline-none focus:ring
-            focus:ring-ring
+            focus:ring-ring rounded-md p-2 text-2xl font-bold duration-200 hover:opacity-70 focus:ring-3
+            focus:outline-hidden
           "
         >
           DkBlog
