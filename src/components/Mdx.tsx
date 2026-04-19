@@ -65,6 +65,7 @@ function HeadingLinked({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const components = {
   h1: ({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
     <HeadingLinked
@@ -233,6 +234,7 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="prose prose-quoteless w-full min-w-full pt-6 dark:prose-invert">
+      {/* eslint-disable-next-line react-hooks/static-components */}
       <Component components={components} />
     </div>
   );
