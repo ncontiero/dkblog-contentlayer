@@ -7,9 +7,7 @@ import { capitalize } from "@/utils/capitalize";
 
 export const revalidate = 60;
 
-type Props = {
-  readonly params: Promise<{ tag: string }>;
-};
+type Props = PageProps<"/t/[tag]">;
 
 const allTags = allPosts
   .flatMap((p) => p.tags && p.tags.map((t) => t))

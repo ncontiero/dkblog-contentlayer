@@ -9,9 +9,7 @@ import { dateParser } from "@/utils/dateParser";
 
 export const revalidate = 60;
 
-type Props = {
-  readonly params: Promise<{ slug: string }>;
-};
+type Props = PageProps<"/p/[slug]">;
 
 export function generateStaticParams() {
   return allPosts.map((p) => ({
