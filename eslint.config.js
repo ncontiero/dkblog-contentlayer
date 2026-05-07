@@ -1,3 +1,7 @@
 import { ncontiero } from "@ncontiero/eslint-config";
 
-export default ncontiero();
+export default ncontiero({
+  jsx: {
+    a11y: true,
+  },
+});

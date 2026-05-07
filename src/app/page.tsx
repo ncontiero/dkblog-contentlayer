@@ -4,7 +4,7 @@ import { compareDesc } from "date-fns";
 import { PostCard } from "@/components/PostCard";
 
 export default function HomePage() {
-  const posts = allPosts.sort((a, b) =>
+  const posts = allPosts.toSorted((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 

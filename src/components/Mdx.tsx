@@ -5,7 +5,7 @@ import type {
 } from "react";
 
 import { Link as LinkIcon } from "lucide-react";
-import { useMDXComponent } from "next-contentlayer2/hooks";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 import NextLink from "next/link";
 import { cn } from "@/lib/utils";
 import { Link } from "./ui/Link";
@@ -223,13 +223,13 @@ interface MdxProps {
   readonly code: string;
 }
 
+function MdxComponent({ code }: MdxProps) {
+  return getMDXComponent(code, { theme: "github-dark" })({ components });
+}
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code, { theme: "github-dark" });
-
   return (
     <div className="prose prose-quoteless dark:prose-invert w-full min-w-full pt-6">
-      {/* eslint-disable-next-line react-hooks/static-components */}
-      <Component components={components} />
+      <MdxComponent code={code} />
     </div>
   );
 }
