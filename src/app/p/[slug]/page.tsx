@@ -38,14 +38,16 @@ export async function generateMetadata(
       title: post.title,
       description: post.description,
       url: canonicalUrl,
-      images: post.image ? [{ url: post.image, alt: post.title }] : undefined,
+      images:
+        post.image != null ? [{ url: post.image, alt: post.title }] : undefined,
       type: "article",
     },
     twitter: {
-      card: post.image ? "summary_large_image" : "summary",
+      card: post.image != null ? "summary_large_image" : "summary",
       title: post.title,
       description: post.description,
-      images: post.image ? { url: post.image, alt: post.title } : undefined,
+      images:
+        post.image != null ? { url: post.image, alt: post.title } : undefined,
     },
   };
 }
@@ -60,14 +62,12 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className="bg-secondary sm:rounded-md">
-      {post.image ? (
+      {post.image != null ? (
         // eslint-disable-next-line nextjs/no-img-element
         <img
           src={post.image}
           alt={post.title}
-          className="
-            flex aspect-1000/420 min-h-[420px] w-[1000px] items-center justify-center object-cover sm:rounded-t-md
-          "
+          className="flex aspect-1000/420 min-h-105 w-250 items-center justify-center object-cover sm:rounded-t-md"
         />
       ) : null}
       <div className="p-4 pt-6 sm:p-10">

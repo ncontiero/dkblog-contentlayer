@@ -12,7 +12,7 @@ export function PostCard({
   return (
     <div
       className={cn(
-        "bg-secondary relative w-1/2 gap-2 rounded-md p-6",
+        "relative w-1/2 gap-2 rounded-md bg-secondary p-6",
         className,
       )}
     >

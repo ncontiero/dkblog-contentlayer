@@ -2,6 +2,7 @@ import type {
   AnchorHTMLAttributes,
   HTMLAttributes,
   ImgHTMLAttributes,
+  JSX,
 } from "react";
 
 import { Link as LinkIcon } from "lucide-react";
@@ -16,7 +17,7 @@ function AnchorLink({
   className,
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isInside = href ? href.startsWith("#") || href.startsWith("/") : false;
+  const isInside = (href?.startsWith("#") || href?.startsWith("/")) ?? false;
 
   return (
     <Link
@@ -42,14 +43,14 @@ function HeadingLinked({
 }: HeadingLinkedProps) {
   const Comp = as;
 
-  return id ? (
+  return id != null ? (
     <Comp id={id} {...props}>
       <NextLink
         href={`#${id}`}
         aria-label="Link to section"
         className="
-          group ring-offset-background focus-visible:ring-ring flex w-fit items-center rounded-md no-underline
-          underline-offset-4 duration-200 hover:underline focus-visible:ring-2 focus-visible:ring-offset-2
+          group flex w-fit items-center rounded-md no-underline underline-offset-4 ring-offset-background duration-200
+          hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
           focus-visible:outline-hidden active:opacity-70
         "
       >
@@ -140,14 +141,14 @@ export const components = {
   ),
   li: ({ className, ...props }: HTMLAttributes<HTMLLIElement>) => (
     <li
-      className={cn("marker:text-muted-foreground my-1", className)}
+      className={cn("my-1 marker:text-muted-foreground", className)}
       {...props}
     />
   ),
   blockquote: ({ className, ...props }: HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        `text-foreground/70 *:text-foreground/70 mt-6 border-l-2 border-zinc-400 pl-3 font-normal dark:border-zinc-600`,
+        `mt-6 border-l-2 border-zinc-400 pl-3 font-normal text-foreground/70 *:text-foreground/70 dark:border-zinc-600`,
         className,
       )}
       {...props}
@@ -157,7 +158,7 @@ export const components = {
     // eslint-disable-next-line nextjs/no-img-element
     <img
       className={cn(
-        "border-border shadow-border mx-auto my-0 w-full rounded-md border shadow-xl",
+        "mx-auto my-0 w-full rounded-md border border-border shadow-xl shadow-border",
         className,
       )}
       alt={alt}
@@ -202,7 +203,7 @@ export const components = {
   pre: ({ className, ...props }: HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "bg-background my-4 overflow-x-auto rounded-lg px-0 py-4",
+        "my-4 overflow-x-auto rounded-lg bg-background px-0 py-4",
         className,
       )}
       {...props}
@@ -211,7 +212,7 @@ export const components = {
   code: ({ className, ...props }: HTMLAttributes<HTMLPreElement>) => (
     <code
       className={cn(
-        "bg-secondary-foreground/10 relative rounded-sm px-1.5 py-1 font-mono",
+        "relative rounded-sm bg-secondary-foreground/10 px-1.5 py-1 font-mono",
         className,
       )}
       {...props}
@@ -224,11 +225,14 @@ interface MdxProps {
 }
 
 function MdxComponent({ code }: MdxProps) {
-  return getMDXComponent(code, { theme: "github-dark" })({ components });
+  return getMDXComponent(code, { theme: "github-dark" })({
+    components,
+  }) as JSX.Element;
 }
+
 export function Mdx({ code }: MdxProps) {
   return (
-    <div className="prose prose-quoteless dark:prose-invert w-full min-w-full pt-6">
+    <div className="prose w-full min-w-full pt-6 dark:prose-invert">
       <MdxComponent code={code} />
     </div>
   );
